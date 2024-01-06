@@ -4,7 +4,140 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>MOVIES</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+    ></script>
+    <script defer type="module" src="main.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a href="#home" class="logo"> <i class="bx bxs-movie"></i>MOVIES </a>
+      <div class="bx bx-menu" id="menu-icon"></div>
+
+      <ul class="navbar">
+        <li><a href="#home" class="home-menu">Home</a></li>
+        <li><a href="#movies">Movies</a></li>
+        <li><a href="#comming">Comming</a></li>
+      </ul>
+      <form>
+        <input class="search" type="search" placeholder="영화를 입력하세요." />
+      </form>
+      <a href="#" class="btn">Sign In</a>
+    </header>
+
+    <section class="home swiper" id="home">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide container">
+          <img src="./img/서울의 봄00.png" alt="서울의 봄" />
+          <div class="home-text">
+            <span>서울의 봄</span>
+            <h1>성공하면 혁명, 실패하면 반역아닙니까?!</h1>
+            <a href="" class="btn">Book Now</a>
+            <a href="" class="play">
+              <i class="bx bx-play"></i>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-slide container">
+          <img src="./img/아쿠아맨.jpeg" alt="아쿠아맨" />
+          <div class="home-text">
+            <span>아쿠아맨과 로스트 킹덤</span>
+            <h1>아클란티스 왕국을 지켜라</h1>
+            <a href="" class="btn">Book Now</a>
+            <a href="" class="play">
+              <i class="bx bx-play"></i>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-slide container">
+          <img src="./img/노량.jpeg" alt="노량" />
+          <div class="home-text">
+            <span>노량</span>
+            <h1>마지막 12척의 전쟁</h1>
+            <a href="" class="btn">Book Now</a>
+            <a href="" class="play">
+              <i class="bx bx-play"></i>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-slide container">
+          <img src="./img/위시.webp" alt="서울의 봄" />
+          <div class="home-text">
+            <span>위시</span>
+            <h1>나에게 소원을 빌어</h1>
+            <a href="" class="btn">Book Now</a>
+            <a href="" class="play">
+              <i class="bx bx-play"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </section>
+
+    <div class="movies" id="movies">
+      <h2 class="heading">Openning This Week</h2>
+      <div class="movies-container"></div>
+    </div>
+
+    <div class="movies" id="comming">
+      <h2 class="heading">Comming</h2>
+      <div class="movies-container">
+        <div class="box">
+          <div class="box-img">
+            <img src="./img/닥터.webp" alt="" />
+          </div>
+          <h3>Dr.strange</h3>
+          <span>120min | Action</span>
+        </div>
+
+        <div class="box">
+          <div class="box-img">
+            <img src="./img/닥터.webp" alt="" />
+          </div>
+          <h3>Dr.strange</h3>
+          <span>120min | Action</span>
+        </div>
+        <div class="box">
+          <div class="box-img">
+            <img src="./img/닥터.webp" alt="" />
+          </div>
+          <h3>Dr.strange</h3>
+          <span>120min | Action</span>
+        </div>
+        <div class="box">
+          <div class="box-img">
+            <img src="./img/닥터.webp" alt="" />
+          </div>
+          <h3>Dr.strange</h3>
+          <span>120min | Action</span>
+        </div>
+        <div class="box">
+          <div class="box-img">
+            <img src="./img/닥터.webp" alt="" />
+          </div>
+          <h3>Dr.strange</h3>
+          <span>120min | Action</span>
+        </div>
+        <div class="box">
+          <div class="box-img">
+            <img src="./img/닥터.webp" alt="" />
+          </div>
+          <h3>Dr.strange</h3>
+          <span>120min | Action</span>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
