@@ -1,3 +1,5 @@
+import { API_KEY } from "./env.js";
+
 var swiper = new Swiper(".home", {
   spaceBetween: 30,
   centeredSlides: true,
@@ -10,8 +12,8 @@ var swiper = new Swiper(".home", {
     clickable: true,
   },
 });
-// dotenv.config();
-// const API_KEY = process.env.API_KEY;
+
+console.log(API_KEY);
 const form = document.querySelector("form");
 
 const removeAll = () => {
@@ -27,7 +29,7 @@ const searchMovie = (event) => {
 
   const input = document.querySelector("input");
   const { value } = input;
-  const searchURL = `https://api.themoviedb.org/3/search/movie?query=${value}&api_key=8dc708411fa44904f55112b888e86bbd`;
+  const searchURL = `https://api.themoviedb.org/3/search/movie?query=${value}&api_key=${API_KEY}`;
 
   if (value) {
     removeAll();
