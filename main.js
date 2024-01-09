@@ -1,4 +1,4 @@
-import { API_KEY } from "./env.js";
+import { API_KEY, NOW_PLAYING, UP_COMMING, OPTIONS } from "./env.js";
 
 // Swiper
 var swiper = new Swiper(".home", {
@@ -37,7 +37,7 @@ const searchMovie = (event) => {
       .then((respose) => respose.json())
       .then(({ results }) =>
         results.forEach((movie) => {
-          openningBlock(movie);
+          createBlock(movie);
         })
       );
   }
@@ -50,7 +50,7 @@ const openningBlock = ({
   overview,
   vote_average,
 }) => {
-  const container = document.querySelector(".openning");
+  const Container = document.querySelector(".openning");
   const box = document.createElement("div");
   const boxImg = document.createElement("div");
   const img = document.createElement("img");
@@ -76,11 +76,15 @@ const openningBlock = ({
 
   boxImg.append(img);
   box.append(boxImg, h3, span, vote);
-  container.append(box);
+  Container.append(box);
+
+  boxImg.append(img);
+  box.append(boxImg, h3, span, vote);
+  Container.append(box);
 };
 
-const commingBlock = (movie) => {
-  const container = document.querySelector(".comming");
+const commingBlock = ({ id, backdrop_path, title, overview, vote_average }) => {
+  const Container = document.querySelector(".comming");
   const box = document.createElement("div");
   const boxImg = document.createElement("div");
   const img = document.createElement("img");
@@ -95,33 +99,25 @@ const commingBlock = (movie) => {
   span.className = "span";
   vote.className = "div";
 
-  box.id = movie.id;
-  img.src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
-  h3.innerText = `${movie.title}`;
+  box.id = id;
+  img.src = `https://image.tmdb.org/t/p/original/${backdrop_path}`;
+  h3.innerText = `${title}`;
   span.innerText =
-    movie.overview === ""
-      ? `${movie.title}`
-      : `${movie.overview.substring(0, 16)}...`;
-  vote.innerText = `⭐️ ${movie.vote_average}`;
-  boxImg.addEventListener("click", () => alert(`영화 id: ${movie.id}`));
+    overview === "" ? `${title}` : `${overview.substring(0, 16)}...`;
+  vote.innerText = `⭐️ ${vote_average}`;
+
+  boxImg.addEventListener("click", () => alert(`영화 id: ${id}`));
+
   boxImg.append(img);
   box.append(boxImg, h3, span, vote);
-  container.append(box);
+  Container.append(box);
+
+  boxImg.append(img);
+  box.append(boxImg, h3, span, vote);
+  Container.append(box);
 };
 
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZGM3MDg0MTFmYTQ0OTA0ZjU1MTEyYjg4OGU4NmJiZCIsInN1YiI6IjYyYzM4NGI0NmEzMDBiMDA1OTllYWJhNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xxPuDPcvOeinG_qLSatA6ziItulniuh0dBFyl-Cui6k",
-  },
-};
-
-fetch(
-  "https://api.themoviedb.org/3/movie/now_playing?language=ko-US&page=1",
-  options
-)
+fetch(`${NOW_PLAYING}`, OPTIONS)
   .then((response) => response.json())
   .then(({ results }) =>
     results.forEach((movie) => {
@@ -130,17 +126,13 @@ fetch(
   )
   .catch((err) => console.error(err));
 
-fetch(
-  "https://api.themoviedb.org/3/movie/upcoming?language=ko-US&page=1",
-  options
-)
+fetch(`${UP_COMMING}`, OPTIONS)
   .then((response) => response.json())
   .then(({ results }) =>
     results.map((movie) => {
       commingBlock(movie);
     })
   )
-
   .catch((err) => console.error(err));
 
 form.addEventListener("submit", searchMovie);
