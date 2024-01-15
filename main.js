@@ -37,7 +37,7 @@ const searchMovie = (event) => {
       .then((respose) => respose.json())
       .then(({ results }) =>
         results.forEach((movie) => {
-          createBlock(movie);
+          openningBlock(movie);
         })
       );
   }
